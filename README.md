@@ -2,7 +2,7 @@
 
 A Streamlit application for classifying imagined left-hand vs right-hand fist
 movements from EEG signals, using the
-[PhysioNet EEG Motor Movement/Imagery Dataset](https://www.physionet.org/content/eegmmidb/1.0.0/).
+[PhysioNet EEG Motor Movement/Imagery Dataset](https://eeg-motor-imagery-prediction-wl7cnfecrcmcjpe9kge7fo.streamlit.app/).
 
 Built for the **ARISE Summer Research Internship** technical challenge —
 *Towards Explainable Multimodal AI for Fatigue Detection Using EEG and Wearable Sensors*.

@@ -1,0 +1,10 @@
+streamlit==1.39.0
+mne==1.8.0
+numpy==2.2.5
+scipy==1.15.3
+scikit-learn==1.5.2
+matplotlib==3.9.2
+pandas==2.2.3
+joblib==1.4.2
+plotly==5.24.1
+pyriemann>=0.6

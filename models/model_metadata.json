@@ -1,0 +1,183 @@
+{
+  "training_subjects": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40
+  ],
+  "runs": [
+    4,
+    8,
+    12
+  ],
+  "preprocessing": {
+    "bandpass_low_hz": 8.0,
+    "bandpass_high_hz": 30.0,
+    "filter_design": "FIR (firwin)",
+    "epoch_tmin_s": 0.5,
+    "epoch_tmax_s": 2.5,
+    "channels": "Band-power: 9 motor-cortex channels ['FC3', 'FCz', 'FC4', 'C3', 'Cz', 'C4', 'CP3', 'CPz', 'CP4']; CSP/Riemannian: ALL 64 EEG channels (spatial filtering)"
+  },
+  "feature_extraction": {
+    "band_power": "9-channel Welch PSD \u2192 log mean power per channel \u00d7 band",
+    "csp": "64-channel CSP log-variance (6 components, Ledoit-Wolf reg)",
+    "riemannian": "64-channel Ledoit-Wolf covariance per epoch (SPD matrix)",
+    "bands_hz": {
+      "mu_alpha": [
+        8.0,
+        13.0
+      ],
+      "beta": [
+        13.0,
+        30.0
+      ]
+    },
+    "n_features_per_epoch": 20
+  },
+  "evaluation_strategy": "Within-subject 80/20 split per subject, predictions aggregated. Reflects individual-level performance (standard BCI evaluation). Cross-subject 5-fold CV also reported.",
+  "model_input_types": {
+    "random_forest": "band_power",
+    "mlp": "band_power",
+    "csp_lda": "raw_epochs",
+    "riemann_mdm": "raw_epochs",
+    "riemann_ts_lda": "raw_epochs"
+  },
+  "results": {
+    "random_forest": {
+      "accuracy": 0.575,
+      "f1_score": 0.5749704676533944,
+      "cv_accuracy_mean": 0.5372222222222222,
+      "cv_accuracy_std": 0.02184400361259722,
+      "confusion_matrix": [
+        [
+          108,
+          76
+        ],
+        [
+          77,
+          99
+        ]
+      ],
+      "classification_report": "                 precision    recall  f1-score   support\n\n Left fist (T1)       0.58      0.59      0.59       184\nRight fist (T2)       0.57      0.56      0.56       176\n\n       accuracy                           0.57       360\n      macro avg       0.57      0.57      0.57       360\n   weighted avg       0.57      0.57      0.57       360\n",
+      "n_train": 1440,
+      "n_test": 360,
+      "evaluation": "within-subject 80/20 per subject, predictions aggregated"
+    },
+    "mlp": {
+      "accuracy": 0.49444444444444446,
+      "f1_score": 0.33794948363817345,
+      "cv_accuracy_mean": 0.5611111111111111,
+      "cv_accuracy_std": 0.013379549531991433,
+      "confusion_matrix": [
+        [
+          3,
+          181
+        ],
+        [
+          1,
+          175
+        ]
+      ],
+      "classification_report": "                 precision    recall  f1-score   support\n\n Left fist (T1)       0.75      0.02      0.03       184\nRight fist (T2)       0.49      0.99      0.66       176\n\n       accuracy                           0.49       360\n      macro avg       0.62      0.51      0.34       360\n   weighted avg       0.62      0.49      0.34       360\n",
+      "n_train": 1440,
+      "n_test": 360,
+      "evaluation": "within-subject 80/20 per subject, predictions aggregated"
+    },
+    "csp_lda": {
+      "accuracy": 0.6194444444444445,
+      "f1_score": 0.6192533301742069,
+      "cv_accuracy_mean": 0.5927777777777778,
+      "cv_accuracy_std": 0.009558139185602927,
+      "confusion_matrix": [
+        [
+          118,
+          66
+        ],
+        [
+          71,
+          105
+        ]
+      ],
+      "classification_report": "                 precision    recall  f1-score   support\n\n Left fist (T1)       0.62      0.64      0.63       184\nRight fist (T2)       0.61      0.60      0.61       176\n\n       accuracy                           0.62       360\n      macro avg       0.62      0.62      0.62       360\n   weighted avg       0.62      0.62      0.62       360\n",
+      "n_train": 1440,
+      "n_test": 360,
+      "evaluation": "within-subject 80/20 per subject, predictions aggregated"
+    },
+    "riemann_mdm": {
+      "accuracy": 0.5111111111111111,
+      "f1_score": 0.5081909186438803,
+      "cv_accuracy_mean": 0.5061111111111111,
+      "cv_accuracy_std": 0.02103788469862386,
+      "confusion_matrix": [
+        [
+          108,
+          76
+        ],
+        [
+          100,
+          76
+        ]
+      ],
+      "classification_report": "                 precision    recall  f1-score   support\n\n Left fist (T1)       0.52      0.59      0.55       184\nRight fist (T2)       0.50      0.43      0.46       176\n\n       accuracy                           0.51       360\n      macro avg       0.51      0.51      0.51       360\n   weighted avg       0.51      0.51      0.51       360\n",
+      "n_train": 1440,
+      "n_test": 360,
+      "evaluation": "within-subject 80/20 per subject, predictions aggregated"
+    },
+    "riemann_ts_lda": {
+      "accuracy": 0.6194444444444445,
+      "f1_score": 0.6184272394435792,
+      "cv_accuracy_mean": 0.6216666666666667,
+      "cv_accuracy_std": 0.015947444549341477,
+      "confusion_matrix": [
+        [
+          123,
+          61
+        ],
+        [
+          76,
+          100
+        ]
+      ],
+      "classification_report": "                 precision    recall  f1-score   support\n\n Left fist (T1)       0.62      0.67      0.64       184\nRight fist (T2)       0.62      0.57      0.59       176\n\n       accuracy                           0.62       360\n      macro avg       0.62      0.62      0.62       360\n   weighted avg       0.62      0.62      0.62       360\n",
+      "n_train": 1440,
+      "n_test": 360,
+      "evaluation": "within-subject 80/20 per subject, predictions aggregated"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Data (NEVER commit raw EEG data)
+data/
+*.edf
+!**/sample_*.edf
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+
+# Notebooks checkpoints
+.ipynb_checkpoints/
